@@ -55,7 +55,11 @@ class PeliculasActivity extends ActionBarActivity implements OnClickListener {
 		// Construimos el servicio REST al que tenemos que llamar
 		//val API_URL = "http://localhost:8080/videoclub-ui-orm-grails"
 		// No funciona localhost , hay que usa 10.0.2.2
-		val API_URL = "http://10.0.2.2:8080/videoclub-ui-orm-grails"
+		// Esta URL apunta al proyecto con ORM de Grails 
+		// val API_URL = "http://10.0.2.2:8080/videoclub-ui-orm-grails"
+		// Esta URL apunta a la solución en Grails con Homes hechos en Xtend
+		val API_URL = "http://10.0.2.2:8080/videoclub-ui-grails-homes-xtend"
+		
 		val restAdapter = new RestAdapter.Builder().setEndpoint(API_URL).build
 		val PeliculasService peliculasService = restAdapter.create(typeof(PeliculasService))
 
@@ -70,9 +74,9 @@ class PeliculasActivity extends ActionBarActivity implements OnClickListener {
 
 				override success(List<Pelicula> peliculas, Response response) {
 					mostrarPeliculas(peliculas)
-					peliculas.forEach [ pelicula |
-						Log.w("getPeliculas", pelicula.titulo + ' ' + pelicula.genero.descripcion)
-					]
+					//peliculas.forEach [ pelicula |
+					//	Log.w("getPeliculas", pelicula.titulo + ' ' + pelicula.genero.descripcion)
+					//]
 				}
 
 			})
