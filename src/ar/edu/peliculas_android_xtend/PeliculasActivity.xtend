@@ -3,11 +3,13 @@ package ar.edu.peliculas_android_xtend
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.ActionBarActivity
+import android.text.Editable
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.View.OnClickListener
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ListView
@@ -19,11 +21,37 @@ import retrofit.RestAdapter
 import retrofit.RetrofitError
 import retrofit.client.Response
 
+import static ar.edu.peliculas_android_xtend.PeliculasActivity.*
+
 class PeliculasActivity extends ActionBarActivity implements OnClickListener {
+	static int MIN_BUSQUEDA_PELICULAS = 2
 
 	override onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_peliculas)
+		
+		// Comportamiento del checkbox que indica si se busca a medida que se escribe
+		val chkBuscar = findViewById(R.id.chkBuscarOnline) as CheckBox
+		chkBuscar.onClickListener = [ View v | 
+			val btnBuscar = findViewById(R.id.btnBuscar) as ImageButton
+			if (chkBuscar.checked) {
+				btnBuscar.visibility = View.INVISIBLE
+			} else {
+				btnBuscar.visibility = View.VISIBLE
+			}
+		]
+			
+		// Comportamiento del título de búsqueda
+		val tituloContiene = findViewById(R.id.tituloContiene) as EditText
+		tituloContiene.addTextChangedListener(new BaseTextWatcher() {
+			
+			override afterTextChanged(Editable editable) {
+				if (chkBuscar.checked && editable.length >= MIN_BUSQUEDA_PELICULAS) {
+					buscarPeliculas
+				}
+			}
+			
+			})
 		val botonConvertir = findViewById(R.id.btnBuscar) as ImageButton
 		botonConvertir.onClickListener = this		
 	}
@@ -48,10 +76,6 @@ class PeliculasActivity extends ActionBarActivity implements OnClickListener {
 	}
 
 	def void buscarPeliculas() {
-		
-	}
-	
-	override onClick(View v) {
 		// Construimos el servicio REST al que tenemos que llamar
 		//val API_URL = "http://localhost:8080/videoclub-ui-orm-grails"
 		// No funciona localhost , hay que usa 10.0.2.2
@@ -80,7 +104,11 @@ class PeliculasActivity extends ActionBarActivity implements OnClickListener {
 				}
 
 			})
-
+		
+	}
+	
+	override onClick(View v) {
+		buscarPeliculas
 	}
 
 	def tituloContiene() {

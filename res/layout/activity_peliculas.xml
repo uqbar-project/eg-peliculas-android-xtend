@@ -34,6 +34,12 @@
             android:src="@drawable/ic_action_search" />
     </LinearLayout>
 
+    <CheckBox
+        android:id="@+id/chkBuscarOnline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buscarInmediatamente" />
+
     <TableRow
         android:id="@+id/tableRowPeliculas"
         android:layout_width="wrap_content"

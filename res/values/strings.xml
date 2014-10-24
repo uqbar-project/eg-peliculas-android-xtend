@@ -4,6 +4,7 @@
     <string name="app_name">Búsqueda de películas</string>
     <string name="action_settings">Configuración</string>
     <string name="buscar">Buscar</string>
+    <string name="buscarInmediatamente">Buscar inmediatamente</string>
 	<string name="titulo">Título contiene</string>
 
 </resources>
