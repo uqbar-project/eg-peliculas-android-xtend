@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Búsqueda de películas</string>
+    <string name="action_settings">Configuración</string>
+    <string name="buscar">Buscar</string>
+	<string name="titulo">Título contiene</string>
+
+</resources>
