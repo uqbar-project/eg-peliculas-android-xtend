@@ -23,6 +23,7 @@
             android:id="@+id/tituloContiene"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:inputType="text"
             android:ems="11" />
 
         <ImageButton
@@ -40,7 +41,7 @@
         android:layout_height="wrap_content"
         android:text="@string/buscarInmediatamente" />
 
-    <TableRow
+    <LinearLayout
         android:id="@+id/tableRowPeliculas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,6 +52,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
         </ListView>
-    </TableRow>
+    </LinearLayout>
 
 </LinearLayout>

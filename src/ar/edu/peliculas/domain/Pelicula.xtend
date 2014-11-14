@@ -1,9 +1,10 @@
 package ar.edu.peliculas.domain
 
 import org.eclipse.xtend.lib.annotations.Accessors
+import java.io.Serializable
 
 @Accessors
-class Pelicula {
+class Pelicula implements Serializable {
 	
 	String titulo
 	Genero genero
