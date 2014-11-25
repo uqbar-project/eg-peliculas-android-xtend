@@ -25,8 +25,6 @@ import retrofit.RestAdapter
 import retrofit.RetrofitError
 import retrofit.client.Response
 
-import static ar.edu.peliculas_android_xtend.PeliculasActivity.*
-
 /**
  * 
  * @author fdodino
@@ -47,15 +45,13 @@ class PeliculasActivity extends ActionBarActivity implements OnClickListener, On
 		]
 			
 		// Comportamiento del título de búsqueda
-		findViewById(R.id.tituloContiene) as EditText => [
-			addTextChangedListener(new BaseTextWatcher() {
-				override afterTextChanged(Editable editable) {
-					if (chkBuscar.checked && editable.length >= MIN_BUSQUEDA_PELICULAS) {
-						buscarPeliculas
-					}
+		val tituloContiene = findViewById(R.id.tituloContiene) as EditText
+		tituloContiene.addTextChangedListener(
+			[ Editable editable | 
+				if (chkBuscar.checked && editable.length >= MIN_BUSQUEDA_PELICULAS) {
+					buscarPeliculas
 				}
-			})
-		]
+			] as BaseTextWatcher)
 		
 		findViewById(R.id.btnBuscar) as ImageButton => [
 			onClickListener = this
@@ -104,7 +100,8 @@ class PeliculasActivity extends ActionBarActivity implements OnClickListener, On
 		// Esta URL apunta a la solución en Grails con Homes hechos en Xtend
 		//		val SERVER_IP = "10.0.2.2"
 		
-		val SERVER_IP = "169.254.196.145"
+		//val SERVER_IP = "169.254.196.145"
+		val SERVER_IP = "10.0.2.2"
 		val API_URL = '''http://«SERVER_IP»:8080/videoclub-ui-grails-homes-xtend'''
 		
 		val restAdapter = new RestAdapter.Builder().setEndpoint(API_URL).build

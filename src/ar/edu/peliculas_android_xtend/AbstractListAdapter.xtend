@@ -9,15 +9,18 @@ import android.widget.TextView
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 
-/**
- * 
- */
 @Accessors
 abstract class AbstractListAdapter<T> extends BaseAdapter {
+
 	Context context
 	List<T> objects
 
 	new() {
+	}
+
+	new(Context pContext, List<T> severalObjects) {
+		context = pContext
+		objects = severalObjects
 	}
 
 	override getCount() {

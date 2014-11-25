@@ -1,22 +1,15 @@
 package ar.edu.peliculas_android_xtend
 
-import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import ar.edu.peliculas.domain.Pelicula
+import android.content.Context
 import java.util.List
 
-/**
- * 
- */
 class PeliculaAdapter extends AbstractListAdapter<Pelicula> {
 
-	new() {
-	}
-	
-	new(Context pContext, List<Pelicula> peliculas) {
-		context = pContext
-		objects = peliculas
+	new(Context context, List<Pelicula> peliculas) {
+		super(context, peliculas)
 	}
 	
 	override getView(int position, View convertView, ViewGroup parent) {
