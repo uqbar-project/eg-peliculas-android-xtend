@@ -6,6 +6,14 @@ Ejemplo que permite buscar películas en base al título. La aplicación se divi
 * parte cliente en Android, presente en este repositorio
 * **servicio REST**: en [Grails](https://github.com/uqbar-project/eg-videoclub-ui-grails) o [XTrest](https://github.com/uqbar-project/eg-videoclub-xtrest) 
 
+## Proyecto
+
+El proyecto está armado para
+
+* Eclipse Kepler
+* Xtend 2.7.2
+* Android SDK 21
+
 ## Conceptos que se ven en la app
 
 * Uso de Activities vs. Fragment para manejar diferentes dispositivos
